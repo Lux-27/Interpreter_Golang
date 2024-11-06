@@ -15,6 +15,7 @@
   - `push`: Adds an element to the end of an array.
   - `puts`: Prints arguments to the console.
   - `update`: Updates an element in an array at a specified index.
+- **Macro**
 
 ## Getting Started
 
@@ -93,6 +94,22 @@ You can use the interpreter to evaluate expressions, define functions, and work 
 >> update(arr, 1, 10)
 [1, 10, 3, 4]
 ```
+
+#### Macros
+Macros allow you to define code transformations that are applied before evaluation. Here are some examples:
+```sh
+>> let unless = macro(condition, consequence, alternative) {
+    quote(if (!(unquote(condition))) {
+        unquote(consequence);
+    } else {
+        unquote(alternative);
+    });
+};
+
+>> unless(10 > 5, puts("not greater"), puts("greater"))
+not greater
+```
+
 
 ## Project Structure
 - lexer/: Contains the lexer implementation.
